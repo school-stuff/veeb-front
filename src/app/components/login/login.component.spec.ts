@@ -21,4 +21,14 @@ describe('LoginComponent', () => {
     it('should create', () => {
         expect(component).toBeTruthy();
     });
+
+    it('should contain email and password input fields', () => {
+        const loginElement: HTMLElement = fixture.nativeElement;
+
+        const emailField = loginElement.querySelector('[type]="email"');
+        const passwordField = loginElement.querySelector('[type]="password"');
+
+        expect(emailField).toBeTruthy();
+        expect(passwordField).toBeTruthy();
+    });
 });
