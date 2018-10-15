@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatButtonModule, MatCardModule, MatInputModule } from '@angular/material';
-import { LoginComponent } from './login/login.component';
+import { MatButtonModule, MatCardModule, MatCheckboxModule, MatInputModule } from '@angular/material';
 
 @NgModule({
     imports: [
@@ -9,13 +8,15 @@ import { LoginComponent } from './login/login.component';
         MatButtonModule,
         MatCardModule,
         MatInputModule,
+        MatCheckboxModule,
     ],
     exports: [
         MatButtonModule,
         MatCardModule,
         MatInputModule,
-        LoginComponent,
+        MatCheckboxModule,
     ],
-    declarations: [LoginComponent],
+    declarations: [],
 })
-export class ComponentsModule {}
+export class ComponentsModule {
+}

@@ -4,14 +4,16 @@ import { AuthenticationService } from '../../services/authentication.service';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from '../../services/alert.service';
+import { UserService } from '../../services/user.service';
+import { User } from '../../models/user.model';
 
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css'],
+    selector: 'app-onboarding',
+    templateUrl: './onboarding.component.html',
+    styleUrls: ['./onboarding.component.css'],
 })
-export class LoginComponent implements OnInit {
-    loginForm: FormGroup;
+export class OnboardingComponent implements OnInit {
+    onboardingForm: FormGroup;
     loading = false;
     submitted = false;
 
@@ -19,31 +21,34 @@ export class LoginComponent implements OnInit {
                 private formBuilder: FormBuilder,
                 private route: ActivatedRoute,
                 private router: Router,
-                private alertService: AlertService) {
+                private alertService: AlertService,
+                private userService: UserService) {
     }
 
     ngOnInit() {
-        this.loginForm = this.formBuilder.group({
-            email: ['', Validators.required],
-            password: ['', Validators.required],
+        this.onboardingForm = this.formBuilder.group({
+            firstName: ['', Validators.required],
+            lastName: ['', Validators.required],
+            birthDate: ['', Validators.required],
+            trainer: [''],
         });
     }
 
     // convenience getter for easy access to form fields
     get f() {
-        return this.loginForm.controls;
+        return this.onboardingForm.controls;
     }
 
     onLogin() {
         this.submitted = true;
 
         // stop here if form is invalid
-        if (this.loginForm.invalid) {
+        if (this.onboardingForm.invalid) {
             return;
         }
 
         this.loading = true;
-        this.authenticationService.login(this.f.email.value, this.f.password.value)
+        this.userService.update(new User())
             .pipe(first())
             .subscribe(
                 (res) => {
