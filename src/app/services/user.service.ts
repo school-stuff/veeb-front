@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class UserService {
 
-    apiUrl = 'api';
+    apiUrl = environment.apiUrl;
 
     constructor(private http: HttpClient) {
     }
@@ -19,7 +20,7 @@ export class UserService {
     }
 
     register(user: User) {
-        return this.http.post(`${this.apiUrl}/users/register`, user);
+        return this.http.post(`${this.apiUrl}/register`, user);
     }
 
     update(user: any) {
