@@ -1,4 +1,4 @@
-<form>
+<form [formGroup]="loginForm" (ngSubmit)="onLogin()">
     <mat-card>
         <mat-card-header>
             <mat-card-title>Login</mat-card-title>
@@ -12,8 +12,13 @@
                     type="email"
                     name="email"
                     value=""
+                    formControlName="email" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && loginForm.controls.email.errors }"
                 >
             </mat-form-field>
+            <div *ngIf="submitted && loginForm.controls.email.errors" class="invalid-feedback">
+                <div *ngIf="loginForm.controls.email.errors.required">Email is required</div>
+            </div>
 
             <mat-form-field class="block-force">
                 <input
@@ -22,12 +27,18 @@
                     type="password"
                     name="password"
                     value=""
+                    formControlName="password" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && loginForm.controls.password.errors }"
                 >
+                <div *ngIf="submitted && loginForm.controls.password.errors" class="invalid-feedback">
+                    <div *ngIf="loginForm.controls.password.errors.required">Password is required</div>
+                </div>
             </mat-form-field>
         </mat-card-content>
 
         <mat-card-actions>
-            <button mat-raised-button color="primary">Save</button>
+            <button mat-raised-button color="primary" [disabled]="!loginForm.valid">Save</button>
         </mat-card-actions>
+
     </mat-card>
 </form>

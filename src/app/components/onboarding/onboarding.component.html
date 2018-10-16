@@ -1,0 +1,65 @@
+<form [formGroup]="onboardingForm" (ngSubmit)="onRegister()">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>To get the most of #logo.com.eu.net@trademarked, please fill the following information.</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+            <mat-form-field class="block-force">
+                <input
+                    matInput
+                    placeholder="First name"
+                    type="text"
+                    name="firstName"
+                    value=""
+                    formControlName="firstName" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && onboardingForm.controls.firstName.errors }"
+                >
+                <div *ngIf="submitted && onboardingForm.controls.firstName.errors" class="invalid-feedback">
+                    <div *ngIf="onboardingForm.controls.firstName.errors.required">First name is required</div>
+                </div>
+            </mat-form-field>
+
+            <mat-form-field class="block-force">
+                <input
+                    matInput
+                    placeholder="Last name"
+                    type="text"
+                    name="lastName"
+                    value=""
+                    formControlName="lastName" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"
+                >
+                <div *ngIf="submitted && onboardingForm.controls.lastName.errors" class="invalid-feedback">
+                    <div *ngIf="onboardingForm.controls.lastName.errors.required">Last name is required</div>
+                </div>
+            </mat-form-field>
+
+            <mat-form-field class="block-force">
+                <input
+                    matInput
+                    placeholder="Birth date"
+                    type="date"
+                    name="birthDate"
+                    value=""
+                    formControlName="birthDate" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.birthDate.errors }"
+                >
+                <div *ngIf="submitted && onboardingForm.controls.birthDate.errors" class="invalid-feedback">
+                    <div *ngIf="onboardingForm.controls.birthDate.errors.required">Password is required</div>
+                </div>
+            </mat-form-field>
+
+            <mat-checkbox
+                class="block-force form-control"
+                type="checkbox"
+                name="trainer"
+                value=""
+                formControlName="trainer">I'm a trainer.</mat-checkbox>
+
+            <mat-card-actions>
+                <button mat-raised-button color="primary" [disabled]="!onboardingForm.valid">Save</button>
+            </mat-card-actions>
+        </mat-card-content>
+    </mat-card>
+</form>

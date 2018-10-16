@@ -1,0 +1,58 @@
+<form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>or create an account here</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+            <mat-form-field class="block-force">
+                <input
+                    matInput
+                    placeholder="Email"
+                    type="email"
+                    name="email"
+                    value=""
+                    formControlName="email" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && registerForm.controls.email.errors }"
+                >
+                <div *ngIf="submitted && registerForm.controls.email.errors" class="invalid-feedback">
+                    <div *ngIf="registerForm.controls.email.errors.required">Email is required</div>
+                </div>
+            </mat-form-field>
+
+            <mat-form-field class="block-force">
+                <input
+                    matInput
+                    placeholder="Password"
+                    type="password"
+                    name="password"
+                    value=""
+                    formControlName="password" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && registerForm.controls.password.errors }"
+                >
+                <div *ngIf="submitted && registerForm.controls.password.errors" class="invalid-feedback">
+                    <div *ngIf="registerForm.controls.password.errors.required">Password is required</div>
+                </div>
+            </mat-form-field>
+
+            <mat-form-field class="block-force">
+                <input
+                    matInput
+                    placeholder="Repeat password"
+                    type="password"
+                    name="passwordConfirm"
+                    value=""
+                    formControlName="passwordConfirm" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && registerForm.controls.passwordConfirm.errors }"
+                >
+                <div *ngIf="submitted && registerForm.controls.passwordConfirm.errors" class="invalid-feedback">
+                    <div *ngIf="registerForm.controls.passwordConfirm.errors.required">Password is required</div>
+                </div>
+            </mat-form-field>
+
+            <mat-card-actions>
+                <button mat-raised-button color="primary" [disabled]="!registerForm.valid">Register</button>
+            </mat-card-actions>
+        </mat-card-content>
+    </mat-card>
+</form>
