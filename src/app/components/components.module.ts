@@ -1,6 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule, MatCardModule, MatCheckboxModule, MatInputModule } from '@angular/material';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { OnboardingComponent } from './onboarding/onboarding.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     imports: [
@@ -9,14 +13,22 @@ import { MatButtonModule, MatCardModule, MatCheckboxModule, MatInputModule } fro
         MatCardModule,
         MatInputModule,
         MatCheckboxModule,
+        ReactiveFormsModule,
     ],
     exports: [
         MatButtonModule,
         MatCardModule,
         MatInputModule,
         MatCheckboxModule,
+        LoginComponent,
+        RegisterComponent,
+        OnboardingComponent,
     ],
-    declarations: [],
+    declarations: [
+        LoginComponent,
+        RegisterComponent,
+        OnboardingComponent,
+    ],
 })
 export class ComponentsModule {
 }

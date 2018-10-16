@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
     loading = false;
     submitted = false;
 
-    constructor(private authenticationService: AuthenticationService,
+    constructor(private authService: AuthenticationService,
                 private formBuilder: FormBuilder,
                 private route: ActivatedRoute,
                 private router: Router,
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
         }
 
         this.loading = true;
-        this.authenticationService.login(this.f.email.value, this.f.password.value)
+        this.authService.login(this.f.email.value, this.f.password.value)
             .pipe(first())
             .subscribe(
                 (res) => {
