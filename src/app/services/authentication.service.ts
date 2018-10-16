@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 
 @Injectable()
@@ -11,7 +11,7 @@ export class AuthenticationService {
     }
 
     login(email: string, password: string) {
-        return this.http.post<any>(`${this.apiUrl}/users/authenticate`, {email: email, password: password})
+        return this.http.post<any>(`${this.apiUrl}/users/authenticate`, {email, password})
             .pipe(map((user) => {
                 // login successful if there's a jwt token in the response
                 if (user && user.token) {

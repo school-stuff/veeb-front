@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { first } from 'rxjs/operators';
-import { AuthenticationService } from '../../services/authentication.service';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AlertService } from '../../services/alert.service';
-import { UserService } from '../../services/user.service';
+import { first } from 'rxjs/operators';
 import { User } from '../../models/user.model';
+import { AlertService } from '../../services/alert.service';
+import { AuthenticationService } from '../../services/authentication.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
     selector: 'app-onboarding',
@@ -39,7 +39,7 @@ export class OnboardingComponent implements OnInit {
         return this.onboardingForm.controls;
     }
 
-    onLogin() {
+    onRegister() {
         this.submitted = true;
 
         // stop here if form is invalid
