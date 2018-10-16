@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { AlertService } from '../../services/alert.service';
@@ -12,7 +12,6 @@ import { AuthenticationService } from '../../services/authentication.service';
 })
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
-    loading = false;
     submitted = false;
 
     constructor(private authService: AuthenticationService,
@@ -29,30 +28,25 @@ export class LoginComponent implements OnInit {
         });
     }
 
-    // convenience getter for easy access to form fields
-    get f() {
-        return this.loginForm.controls;
-    }
-
     onLogin() {
         this.submitted = true;
 
-        // stop here if form is invalid
         if (this.loginForm.invalid) {
             return;
         }
-
-        this.loading = true;
-        this.authService.login(this.f.email.value, this.f.password.value)
+        this.loginForm.markAsPending();
+        this.authService.login(this.loginForm.controls.email.value, this.loginForm.controls.password.value)
             .pipe(first())
             .subscribe(
-                (res) => {
+                () => {
                     this.alertService.success('common.alerts.success.login', true);
+                    this.loginForm.updateValueAndValidity();
                     this.router.navigate(['']);
                 },
                 (error) => {
                     this.alertService.error(error);
-                    this.loading = false;
+                    this.loginForm.patchValue({name: this.loginForm.controls.email.value, password: ''});
+                    this.loginForm.updateValueAndValidity();
                 });
     }
 }

@@ -13,10 +13,10 @@
                     name="firstName"
                     value=""
                     formControlName="firstName" class="form-control"
-                    [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"
+                    [ngClass]="{ 'is-invalid': submitted && onboardingForm.controls.firstName.errors }"
                 >
-                <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-                    <div *ngIf="f.firstName.errors.required">First name is required</div>
+                <div *ngIf="submitted && onboardingForm.controls.firstName.errors" class="invalid-feedback">
+                    <div *ngIf="onboardingForm.controls.firstName.errors.required">First name is required</div>
                 </div>
             </mat-form-field>
 
@@ -30,8 +30,8 @@
                     formControlName="lastName" class="form-control"
                     [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"
                 >
-                <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-                    <div *ngIf="f.lastName.errors.required">Last name is required</div>
+                <div *ngIf="submitted && onboardingForm.controls.lastName.errors" class="invalid-feedback">
+                    <div *ngIf="onboardingForm.controls.lastName.errors.required">Last name is required</div>
                 </div>
             </mat-form-field>
 
@@ -45,8 +45,8 @@
                     formControlName="birthDate" class="form-control"
                     [ngClass]="{ 'is-invalid': submitted && f.birthDate.errors }"
                 >
-                <div *ngIf="submitted && f.birthDate.errors" class="invalid-feedback">
-                    <div *ngIf="f.birthDate.errors.required">Password is required</div>
+                <div *ngIf="submitted && onboardingForm.controls.birthDate.errors" class="invalid-feedback">
+                    <div *ngIf="onboardingForm.controls.birthDate.errors.required">Password is required</div>
                 </div>
             </mat-form-field>
 

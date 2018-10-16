@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
-import { User } from '../../models/user.model';
 import { AlertService } from '../../services/alert.service';
 import { AuthenticationService } from '../../services/authentication.service';
 import { UserService } from '../../services/user.service';
@@ -14,7 +13,6 @@ import { UserService } from '../../services/user.service';
 })
 export class OnboardingComponent implements OnInit {
     onboardingForm: FormGroup;
-    loading = false;
     submitted = false;
 
     constructor(private authenticationService: AuthenticationService,
@@ -34,30 +32,32 @@ export class OnboardingComponent implements OnInit {
         });
     }
 
-    // convenience getter for easy access to form fields
-    get f() {
-        return this.onboardingForm.controls;
-    }
-
     onRegister() {
         this.submitted = true;
 
-        // stop here if form is invalid
         if (this.onboardingForm.invalid) {
             return;
         }
 
-        this.loading = true;
-        this.userService.update(new User())
+        const fc = this.onboardingForm.controls;
+        const firstName = fc.firstName.value;
+        const lastName = fc.lastName.value;
+        const birthDate = fc.birthDate.value;
+        const trainer = fc.trainer.value;
+
+        this.onboardingForm.markAsPending();
+        this.userService.update({firstName, lastName, birthDate, trainer})
             .pipe(first())
             .subscribe(
-                (res) => {
+                () => {
                     this.alertService.success('common.alerts.success.login', true);
+                    this.onboardingForm.updateValueAndValidity();
                     this.router.navigate(['']);
                 },
                 (error) => {
                     this.alertService.error(error);
-                    this.loading = false;
+                    this.onboardingForm.patchValue({name: '', password: ''});
+                    this.onboardingForm.updateValueAndValidity();
                 });
     }
 }

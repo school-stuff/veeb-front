@@ -22,7 +22,7 @@ export class UserService {
         return this.http.post(`${this.apiUrl}/users/register`, user);
     }
 
-    update(user: User) {
+    update(user: any) {
         return this.http.put(`${this.apiUrl}/users/` + user.id, user);
     }
 

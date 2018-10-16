@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoginComponent } from './login.component';
+import { OnboardingComponent } from './onboarding.component';
 
-describe('LoginComponent', () => {
-    let component: LoginComponent;
-    let fixture: ComponentFixture<LoginComponent>;
+describe('OnboardingComponent', () => {
+    let component: OnboardingComponent;
+    let fixture: ComponentFixture<OnboardingComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [LoginComponent],
+            declarations: [OnboardingComponent],
         }).compileComponents();
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(LoginComponent);
+        fixture = TestBed.createComponent(OnboardingComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });
@@ -22,13 +22,17 @@ describe('LoginComponent', () => {
         expect(component).toBeTruthy();
     });
 
-    it('should contain email and password input fields', () => {
+    it('should contain {firstName, lastName, birthDate, trainer} input fields', () => {
         const loginElement: HTMLElement = fixture.nativeElement;
 
         const emailField = loginElement.querySelector('[type]="email"');
         const passwordField = loginElement.querySelector('[type]="password"');
+        const birthDateField = loginElement.querySelector('[type]="date"');
+        const trainerField = loginElement.querySelector('[type]="checkbox"');
 
         expect(emailField).toBeTruthy();
         expect(passwordField).toBeTruthy();
+        expect(birthDateField).toBeTruthy();
+        expect(trainerField).toBeTruthy();
     });
 });

@@ -6,5 +6,5 @@ export class User {
     firstName: string;
     lastName: string;
     birthDate: string;
-    is_trainer: boolean;
+    trainer: boolean;
 }
