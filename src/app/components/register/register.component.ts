@@ -46,9 +46,11 @@ export class RegisterComponent implements OnInit {
             .subscribe(
                 () => {
                     this.alertService.success('common.alerts.success.register', true);
-                    this.router.navigate(['']);
                     this.registerForm.updateValueAndValidity();
+                    console.log('Register successful.');
+                    /*
                     this.router.navigate(['']);
+                     */
                 },
                 (error) => {
                     this.alertService.error(error);

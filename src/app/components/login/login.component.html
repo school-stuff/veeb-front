@@ -30,14 +30,18 @@
                     formControlName="password" class="form-control"
                     [ngClass]="{ 'is-invalid': submitted && loginForm.controls.password.errors }"
                 >
-                <div *ngIf="submitted && loginForm.controls.password.errors" class="invalid-feedback">
-                    <div *ngIf="loginForm.controls.password.errors.required">Password is required</div>
-                </div>
             </mat-form-field>
+            <div *ngIf="submitted && loginForm.controls.password.errors" class="invalid-feedback">
+                <div *ngIf="loginForm.controls.password.errors.required">Password is required</div>
+            </div>
         </mat-card-content>
 
         <mat-card-actions>
             <button mat-raised-button color="primary" [disabled]="!loginForm.valid">Save</button>
+        </mat-card-actions>
+
+        <mat-card-actions>
+            <button mat-raised-button color="primary" (click)="register()">Register here</button>
         </mat-card-actions>
 
     </mat-card>

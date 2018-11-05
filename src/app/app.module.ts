@@ -14,6 +14,7 @@ import { ErrorInterceptor } from './shared/injectables/auth/error.interceptor';
 import { JwtInterceptor } from './shared/injectables/auth/jwt.interceptor';
 import { SharedModule } from './shared/shared.module';
 import { ViewsModule } from './views/views.module';
+import { ViewsRoutingModule } from './views/views-routing.module';
 
 @NgModule({
     imports: [
@@ -21,6 +22,7 @@ import { ViewsModule } from './views/views.module';
         FormsModule,
         HttpClientModule,
         BrowserAnimationsModule,
+        ViewsRoutingModule,
         AppRoutingModule,
         ComponentsModule,
         ViewsModule,

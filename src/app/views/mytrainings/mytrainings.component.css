@@ -1,0 +1,10 @@
+@media (min-width: 992px) {
+    .single-form {
+        max-width: 60%;
+        margin: auto;
+    }
+}
+
+.form-item {
+    margin-bottom: 20px;
+}

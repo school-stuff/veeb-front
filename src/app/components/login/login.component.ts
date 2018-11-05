@@ -13,6 +13,7 @@ import { AuthenticationService } from '../../services/authentication.service';
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     submitted = false;
+    returnUrl;
 
     constructor(private authService: AuthenticationService,
                 private formBuilder: FormBuilder,
@@ -22,6 +23,8 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit() {
+        // Get the query params
+        this.route.queryParams.subscribe((params) => this.returnUrl = params['return'] || '/mytrainings');
         this.loginForm = this.formBuilder.group({
             email: ['', Validators.required],
             password: ['', Validators.required],
@@ -41,12 +44,16 @@ export class LoginComponent implements OnInit {
                 () => {
                     this.alertService.success('common.alerts.success.login', true);
                     this.loginForm.updateValueAndValidity();
-                    this.router.navigate(['']);
+                    this.router.navigateByUrl('');
                 },
                 (error) => {
-                    this.alertService.error(error);
+                    this.alertService.error('wrong login inforamtion');
                     this.loginForm.patchValue({name: this.loginForm.controls.email.value, password: ''});
                     this.loginForm.updateValueAndValidity();
                 });
+    }
+
+    register() {
+        this.router.navigateByUrl('register');
     }
 }
