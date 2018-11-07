@@ -4,18 +4,20 @@ import { ComponentsModule } from '../components/components.module';
 import { SharedModule } from '../shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import { ViewsRoutingModule } from './views-routing.module';
-import { MytrainingsComponent } from './mytrainings/mytrainings.component';
+import { MatIcon, MatIconModule, MatSidenavModule, MatToolbar, MatToolbarModule } from '@angular/material';
 
 @NgModule({
     imports: [
         CommonModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatSidenavModule,
         ComponentsModule,
         ViewsRoutingModule,
         SharedModule,
     ],
     declarations: [
         HomeComponent,
-        MytrainingsComponent,
     ],
 })
 export class ViewsModule {

@@ -15,6 +15,7 @@ import { JwtInterceptor } from './shared/injectables/auth/jwt.interceptor';
 import { SharedModule } from './shared/shared.module';
 import { ViewsModule } from './views/views.module';
 import { ViewsRoutingModule } from './views/views-routing.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     imports: [

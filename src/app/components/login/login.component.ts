@@ -11,6 +11,7 @@ import { AuthenticationService } from '../../services/authentication.service';
     styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+
     loginForm: FormGroup;
     submitted = false;
     returnUrl;
@@ -24,7 +25,7 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {
         // Get the query params
-        this.route.queryParams.subscribe((params) => this.returnUrl = params['return'] || '/mytrainings');
+        this.route.queryParams.subscribe((params) => this.returnUrl = params['returnUrl'] || '/');
         this.loginForm = this.formBuilder.group({
             email: ['', Validators.required],
             password: ['', Validators.required],
@@ -44,7 +45,7 @@ export class LoginComponent implements OnInit {
                 () => {
                     this.alertService.success('common.alerts.success.login', true);
                     this.loginForm.updateValueAndValidity();
-                    this.router.navigateByUrl('');
+                    this.router.navigateByUrl(this.returnUrl);
                 },
                 (error) => {
                     this.alertService.error('wrong login inforamtion');

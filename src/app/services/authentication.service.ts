@@ -25,6 +25,10 @@ export class AuthenticationService {
         localStorage.setItem(this.TOKEN_NAME, JSON.stringify({email, token}));
     }
 
+    register(user: any) {
+        return this.http.post(`${this.apiUrl}/register`, {email: user.email, password: user.password});
+    }
+
     login(email: string, password: string) {
         return this.http.post<any>(`${this.apiUrl}/login`, {email, password}, {observe: 'response'})
             .pipe(map((response) => {

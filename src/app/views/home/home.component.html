@@ -1,8 +1,19 @@
-<div class="single-form">
-    <!--
-    <app-login class="form-item"></app-login>
-    <app-register class="form-item"></app-register>
-    -->
 
-    <h1>You are now logged in!</h1>
+
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+    <a href="javascript:void(0)" (click)="goTo(['exercise'])">My exercises</a>
+    <a href="javascript:void(0)" (click)="goTo(['training'])">My trainings</a>
+    <a href="javascript:void(0)" (click)="goTo(['plan'])">My training plans</a>
+
+    <a href="javascript:void(0)">Customers</a>
+    <a href="javascript:void(0)">USERNAME</a>
+</div>
+
+<div id="main">
+    <mat-toolbar color="primary" class="example-toolbar">
+        <button mat-icon-button (click)="openNav()"><mat-icon>menu</mat-icon></button>
+        <h1 class="example-app-name">App</h1>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
 </div>

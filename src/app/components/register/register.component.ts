@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { AlertService } from '../../services/alert.service';
 import { UserService } from '../../services/user.service';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
     selector: 'app-register',
@@ -22,7 +23,8 @@ export class RegisterComponent implements OnInit {
         private formBuilder: FormBuilder,
         private router: Router,
         private userService: UserService,
-        private alertService: AlertService) {
+        private alertService: AlertService,
+        private authService: AuthenticationService) {
     }
 
     ngOnInit() {
@@ -41,7 +43,7 @@ export class RegisterComponent implements OnInit {
         }
 
         this.registerForm.markAsPending();
-        this.userService.register(this.registerForm.value)
+        this.authService.register(this.registerForm.value)
             .pipe(first())
             .subscribe(
                 () => {

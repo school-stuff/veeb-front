@@ -1,17 +1,13 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
-    selector: 'app-home',
-    templateUrl: './home.component.html',
-    styleUrls: ['./home.component.css'],
+    selector: 'app-navbar',
+    templateUrl: './navbar.component.html',
+    styleUrls: ['./navbar.component.css'],
 })
-export class HomeComponent {
-    constructor(private router: Router) {
-    }
+export class NavbarComponent {
 
-    toTrainings() {
-        this.router.navigate(['training']);
+    constructor() {
     }
 
     openNav() {
@@ -24,9 +20,5 @@ export class HomeComponent {
         document.getElementById('mySidenav').style.width = '0';
         document.getElementById('main').style.marginLeft = '0';
         document.body.style.backgroundColor = 'white';
-    }
-
-    goTo(commands) {
-        this.router.navigate(commands);
     }
 }

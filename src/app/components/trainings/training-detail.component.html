@@ -1,0 +1,26 @@
+<div *ngIf="training">
+    <mat-card-header>
+        <mat-card-title>{{training.description}}</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+        <mat-expansion-panel *ngFor="let exercise of localExercises">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{ exercise.name }}
+                </mat-panel-title>
+                <mat-panel-description>
+                    {{ exercise.amount }}
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div>
+                {{ exercise.description }}
+            </div>
+        </mat-expansion-panel>
+    </mat-card-content>
+
+    <mat-card-header>
+        <mat-card-title>Created at: {{ training.createdAt }}</mat-card-title>
+    </mat-card-header>
+</div>

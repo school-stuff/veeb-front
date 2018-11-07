@@ -1,0 +1,20 @@
+<mat-card>
+    <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="addTraining()">Add</button>
+    </mat-card-actions>
+
+    <mat-expansion-panel *ngFor="let training of trainings">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{ training.name }}
+            </mat-panel-title>
+            <mat-panel-description>
+
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <app-training-detail [training]="training"></app-training-detail>
+
+    </mat-expansion-panel>
+
+</mat-card>

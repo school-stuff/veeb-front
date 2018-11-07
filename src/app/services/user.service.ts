@@ -6,28 +6,24 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class UserService {
 
-    apiUrl = environment.apiUrl;
+    apiUrl = `${environment.apiUrl}/user`;
 
     constructor(private http: HttpClient) {
     }
 
     getAll() {
-        return this.http.get<User[]>(`${this.apiUrl}/users`);
+        return this.http.get<User[]>(`${this.apiUrl}`);
     }
 
     getById(id: number) {
-        return this.http.get(`${this.apiUrl}/users/` + id);
-    }
-
-    register(user: any) {
-        return this.http.post(`${this.apiUrl}/register`, {email: user.email, password: user.password});
+        return this.http.get(`${this.apiUrl}/${id}`);
     }
 
     update(user: any) {
-        return this.http.put(`${this.apiUrl}/users/` + user.id, user);
+        return this.http.put(`${this.apiUrl}/${user.id}`, user);
     }
 
     delete(id: number) {
-        return this.http.delete(`${this.apiUrl}/users/` + id);
+        return this.http.delete(`${this.apiUrl}/${id}`);
     }
 }
