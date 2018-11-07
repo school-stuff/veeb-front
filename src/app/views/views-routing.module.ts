@@ -9,6 +9,8 @@ import { TrainingListComponent } from '../components/trainings/training-list.com
 import { TrainingBaseComponent } from '../components/trainings/training-base.component';
 import { PlanBaseComponent } from '../components/plans/plan-base.component';
 import { PlanListComponent } from '../components/plans/plan-list.component';
+import { ExerciseBaseComponent } from '../components/exercises/exercise-base.component';
+import { ExerciseListComponent } from '../components/exercises/exercise-list.component';
 
 const viewsRoutes: Routes = [
     {
@@ -56,6 +58,23 @@ const viewsRoutes: Routes = [
                     {
                         path: 'list',
                         component: PlanListComponent,
+                        canActivate: [AuthGuard],
+                    },
+                ],
+            },
+            {
+                path: 'exercise',
+                component: ExerciseBaseComponent,
+                canActivate: [AuthGuard],
+                children: [
+                    {
+                        path: '',
+                        redirectTo: 'list',
+                        pathMatch: 'full',
+                    },
+                    {
+                        path: 'list',
+                        component: ExerciseListComponent,
                         canActivate: [AuthGuard],
                     },
                 ],

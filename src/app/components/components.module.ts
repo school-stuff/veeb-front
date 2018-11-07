@@ -13,6 +13,8 @@ import { TrainingBaseComponent } from './trainings/training-base.component';
 import { RouterModule } from '@angular/router';
 import { PlanListComponent } from './plans/plan-list.component';
 import { PlanBaseComponent } from './plans/plan-base.component';
+import { ExerciseBaseComponent } from './exercises/exercise-base.component';
+import { ExerciseListComponent } from './exercises/exercise-list.component';
 
 @NgModule({
     imports: [
@@ -39,6 +41,8 @@ import { PlanBaseComponent } from './plans/plan-base.component';
         TrainingBaseComponent,
         PlanListComponent,
         PlanBaseComponent,
+        ExerciseListComponent,
+        ExerciseBaseComponent,
     ],
     declarations: [
         LoginComponent,
@@ -50,6 +54,8 @@ import { PlanBaseComponent } from './plans/plan-base.component';
         TrainingBaseComponent,
         PlanListComponent,
         PlanBaseComponent,
+        ExerciseListComponent,
+        ExerciseBaseComponent,
     ],
     providers: [
         TrainingService,
