@@ -28,7 +28,7 @@
                     name="lastName"
                     value=""
                     formControlName="lastName" class="form-control"
-                    [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"
+                    [ngClass]="{ 'is-invalid': submitted && onboardingForm.controls.lastName.errors }"
                 >
                 <div *ngIf="submitted && onboardingForm.controls.lastName.errors" class="invalid-feedback">
                     <div *ngIf="onboardingForm.controls.lastName.errors.required">Last name is required</div>
@@ -43,7 +43,7 @@
                     name="birthDate"
                     value=""
                     formControlName="birthDate" class="form-control"
-                    [ngClass]="{ 'is-invalid': submitted && f.birthDate.errors }"
+                    [ngClass]="{ 'is-invalid': submitted && onboardingForm.controls.birthDate.errors }"
                 >
                 <div *ngIf="submitted && onboardingForm.controls.birthDate.errors" class="invalid-feedback">
                     <div *ngIf="onboardingForm.controls.birthDate.errors.required">Password is required</div>
