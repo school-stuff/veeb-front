@@ -6,8 +6,6 @@ import { AlertService } from '../../services/alert.service';
 import { AuthenticationService } from '../../services/authentication.service';
 import { TrainingService } from '../../services/training.service';
 import { Training } from '../../models/training.model';
-import { ExerciseService } from '../../services/exercise.service';
-import { Exercise } from '../../models/exercise.model';
 
 @Component({
     selector: 'app-plan-list',
@@ -16,37 +14,31 @@ import { Exercise } from '../../models/exercise.model';
 })
 export class ExerciseListComponent implements OnInit {
 
-    exercises: any[];
-    openedExerciseId: number;
+    plans: any[];
+    openedPlanId: number;
 
     constructor(private authService: AuthenticationService,
                 private formBuilder: FormBuilder,
                 private route: ActivatedRoute,
                 private router: Router,
                 private alertService: AlertService,
-                private trainingService: TrainingService,
-                private exercisesService: ExerciseService) {
+                private trainingService: TrainingService) {
 
     }
 
     ngOnInit() {
-        this.loadExercises();
+        this.loadPlans();
     }
 
-    addExercise() {
-        this.router.navigate(['exercise', 'new']);
+    addPlan() {
+        this.router.navigate(['plan', 'new']);
     }
 
-    openExercise(id) {
+    openPlan(id) {
     }
 
-    loadExercises() {
-        this.exercisesService.getAll().subscribe((res: Exercise[]) => {
-            console.log(res);
-            this.exercises = res;
-        }, (error) => {
-            console.log(error);
-        });
+    loadPlans() {
+
     }
 
 }

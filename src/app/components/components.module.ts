@@ -15,7 +15,6 @@ import { PlanListComponent } from './plans/plan-list.component';
 import { PlanBaseComponent } from './plans/plan-base.component';
 import { ExerciseBaseComponent } from './exercises/exercise-base.component';
 import { ExerciseListComponent } from './exercises/exercise-list.component';
-import { ExerciseService } from '../services/exercise.service';
 
 @NgModule({
     imports: [
@@ -60,7 +59,6 @@ import { ExerciseService } from '../services/exercise.service';
     ],
     providers: [
         TrainingService,
-        ExerciseService,
     ],
 })
 export class ComponentsModule {
